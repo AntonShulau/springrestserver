@@ -22,7 +22,6 @@ public class MyConfig {
 
     @Bean
     public DataSource dataSource(){
-
         ComboPooledDataSource comboPooledDataSource=new ComboPooledDataSource();
         try {
             comboPooledDataSource.setDriverClass("org.postgresql.Driver");

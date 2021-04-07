@@ -11,20 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
-@Repository   //для всех классов DAO использовать Repository
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional //спринг сам контролирует открытие и закрытие транзакции
+    @Transactional
     public List<Employee> getAllEmployees() {
-
         Session session=sessionFactory.getCurrentSession();
-//        List<Employee> allEmploees=session.createQuery("from Employee ", Employee.class).getResultList();
         Query<Employee> query=session.createQuery("from Employee ", Employee.class);
         List<Employee> allEmployees = query.getResultList();
-
         return allEmployees;
 
     }
@@ -35,25 +32,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         session.saveOrUpdate(employee);
     }
 
-//    @Override
-//    public void updateEmployee(Employee employee) {
-//        Session session=sessionFactory.getCurrentSession();
-//        session.saveOrUpdate(employee);
-//    }
-
     @Override
     public void deleteEmployee(Employee employee) {
         Session session=sessionFactory.getCurrentSession();
         session.delete(employee);
     }
 
-
     public Employee getEmployeeById(int id) {
-
         Session session=sessionFactory.getCurrentSession();
-//        List<Employee> allEmploees=session.createQuery("from Employee ", Employee.class).getResultList();
         Employee query=session.get(Employee.class,id);
-
         return query;
 
     }

@@ -23,19 +23,15 @@ public class MyRESTController {
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
         List<Employee> allEmloyees=employeeService.getAllEmployees();
-
         return allEmloyees;
     }
 
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable int id){
-
         Employee employee=employeeService.getEmployeeById(id);
         if(employee==null){
-            throw new NoSuchEmployeeException("There is no employee with "+id+" in Date base.");
-
+            throw new NoSuchEmployeeException("There is no employee with "+id+" in Database.");
         }
-
         return employee;
     }
 

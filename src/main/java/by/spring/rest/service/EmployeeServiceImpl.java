@@ -14,7 +14,7 @@ public class EmployeeServiceImpl  implements  EmployeeService{
     private EmployeeDAO employeeDAO;
 
     @Override
-    @Transactional //спринг сам контролирует открытие и закрытие транзакции
+    @Transactional
     public List<Employee> getAllEmployees() {
         return employeeDAO.getAllEmployees();
     }
@@ -24,12 +24,6 @@ public class EmployeeServiceImpl  implements  EmployeeService{
     public void saveEmployee(Employee employee) {
         employeeDAO.saveEmployee(employee);
     }
-
-//    @Override
-//    @Transactional
-//    public void updateEmployee(Employee employee) {
-//        employeeDAO.updateEmployee(employee);
-//    }
 
     @Override
     @Transactional
